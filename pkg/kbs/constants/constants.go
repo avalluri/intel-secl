@@ -87,7 +87,7 @@ const (
 const (
 	DefaultSGXLabel         = "SGX"
 	VerifyQuote             = "/sgx_qv_verify_quote"
-	KeyTransferOpertaion    = "transfer key"
+	KeyTransferOperation    = "transfer key"
 	SessionOperation        = "establish session key"
 	SuccessStatus           = "success"
 	FailureStatus           = "failure"

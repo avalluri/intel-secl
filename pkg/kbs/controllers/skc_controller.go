@@ -112,7 +112,7 @@ func (kc *SKCController) TransferApplicationKey(responseWriter http.ResponseWrit
 			var t kbs.Fault // if session is  not valid then send Not-Authorized.
 			t.Type = "not-authorized"
 			challenge.Faults = append(challenge.Faults, t)
-			challenge.Operation = constants.KeyTransferOpertaion
+			challenge.Operation = constants.KeyTransferOperation
 			challenge.Status = constants.FailureStatus
 
 			secLog.Info("controllers/skc_controller:TransferApplicationKey() Unauthorized: Generated Challenge")
@@ -133,7 +133,7 @@ func (kc *SKCController) TransferApplicationKey(responseWriter http.ResponseWrit
 			t.Message = "sgx attributes verification failed"
 			t.Type = "not-found"
 			challenge.Faults = append(challenge.Faults, t)
-			challenge.Operation = constants.KeyTransferOpertaion
+			challenge.Operation = constants.KeyTransferOperation
 			challenge.Status = constants.FailureStatus
 
 			secLog.Info("controllers/skc_controller:TransferApplicationKey() NotFound: sgx attributes verification failed")
@@ -162,7 +162,7 @@ func (kc *SKCController) TransferApplicationKey(responseWriter http.ResponseWrit
 		outputKeyData.KeyInfo.KeyLength = key.KeyInformation.KeyLength
 		outputKeyData.KeyInfo.Policy.Link.KeyTransfer.Href = url
 		outputKeyData.KeyInfo.Policy.Link.KeyTransfer.Method = "get"
-		outputKeyData.Operation = constants.KeyTransferOpertaion
+		outputKeyData.Operation = constants.KeyTransferOperation
 		outputKeyData.Status = constants.SuccessStatus
 
 		sessionID, err := base64.StdEncoding.DecodeString(keyInfo.ActiveSessionID)
